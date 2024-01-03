@@ -1,0 +1,51 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: MyService API
+    version: 0.0.1
+paths:
+    /my-api/{id}:
+        post:
+            tags:
+                - MyService
+            operationId: MyService_Call
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/helloworld.v1.Request'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/helloworld.v1.Response'
+components:
+    schemas:
+        helloworld.v1.MsgInline:
+            type: object
+            properties: {}
+        helloworld.v1.Request:
+            type: object
+            properties:
+                id:
+                    type: string
+                msg:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/helloworld.v1.MsgInline'
+        helloworld.v1.Response:
+            type: object
+            properties: {}
+tags:
+    - name: MyService
